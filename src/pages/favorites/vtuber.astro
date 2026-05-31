@@ -11,7 +11,7 @@ const vtubers = [
   {
     name: "KMNZ",
     slug: "KMNZ",
-    tags: ["歌"],
+    tags: ["RK Music", "歌"],
   },
 
   {
@@ -70,10 +70,18 @@ const filteredVtubers = selectedTag
 
     <a
       href={`${import.meta.env.BASE_URL}favorites/vtuber`}
-      class="
-        px-3 py-1 rounded-full
-        border border-zinc-300
-      "
+      class={
+        !selectedTag
+          ? `
+            px-3 py-1 rounded-full
+            bg-zinc-700
+            text-white
+          `
+          : `
+            px-3 py-1 rounded-full
+            border border-zinc-300
+          `
+      }
     >
       すべて
     </a>
@@ -83,11 +91,19 @@ const filteredVtubers = selectedTag
 
         <a
           href={`${import.meta.env.BASE_URL}favorites/vtuber?tag=${tag}`}
-          class="
-            px-3 py-1 rounded-full
-            bg-emerald-200
-            text-emerald-900
-          "
+          class={
+            selectedTag === tag
+              ? `
+                px-3 py-1 rounded-full
+                bg-emerald-600
+                text-white
+              `
+              : `
+                px-3 py-1 rounded-full
+                bg-emerald-200
+                text-emerald-900
+              `
+          }
         >
           #{tag}
         </a>
