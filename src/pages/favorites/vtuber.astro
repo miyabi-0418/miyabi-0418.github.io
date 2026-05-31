@@ -45,6 +45,14 @@ const allTags = [
   ),
 ];
 
+const selectedTag = Astro.url.searchParams.get("tag");
+
+const filteredVtubers = selectedTag
+  ? vtubers.filter((vtuber) =>
+      vtuber.tags.includes(selectedTag)
+    )
+  : vtubers;
+
 ---
 
 <Layout title="Vtuber">
@@ -60,30 +68,39 @@ const allTags = [
 
   <div class="flex gap-2 flex-wrap mb-8">
 
+    <a
+      href={`${import.meta.env.BASE_URL}favorites/vtuber`}
+      class="
+        px-3 py-1 rounded-full
+        border border-zinc-300
+      "
+    >
+      すべて
+    </a>
+
     {
       allTags.map((tag) => (
 
-        <span
+        <a
+          href={`${import.meta.env.BASE_URL}favorites/vtuber?tag=${tag}`}
           class="
-            text-sm
+            px-3 py-1 rounded-full
             bg-emerald-200
             text-emerald-900
-            px-3
-            py-1
-            rounded-full
           "
         >
           #{tag}
-        </span>
+        </a>
 
       ))
     }
+
   </div>
 
   <div class="space-y-4">
 
     {
-      vtubers.map((vtuber) => (
+      filteredVtubers.map((vtuber) => (
 
         <a
           href={`${import.meta.env.BASE_URL}favorites/vtubers/${vtuber.slug}`}
