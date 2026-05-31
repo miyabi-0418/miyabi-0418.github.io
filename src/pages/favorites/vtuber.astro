@@ -58,6 +58,28 @@ const allTags = [
     {vtubers.length}人
   </p>
 
+  <div class="flex gap-2 flex-wrap mb-8">
+
+    {
+      allTags.map((tag) => (
+
+        <span
+          class="
+            text-sm
+            bg-emerald-200
+            text-emerald-900
+            px-3
+            py-1
+            rounded-full
+          "
+        >
+          #{tag}
+        </span>
+
+      ))
+    }
+  </div>
+
   <div class="space-y-4">
 
     {
@@ -79,28 +101,6 @@ const allTags = [
           <p class="font-bold text-lg">
             {vtuber.name}
           </p>
-
-          <div class="flex gap-2 flex-wrap mb-8">
-
-            {
-              allTags.map((tag) => (
-
-                <span
-                  class="
-                    text-sm
-                    bg-emerald-200
-                    text-emerald-900
-                    px-3
-                    py-1
-                    rounded-full
-                  "
-                >
-                  #{tag}
-                </span>
-
-              ))
-            }
-          </div>
 
           <div class="flex gap-2 flex-wrap mt-2">
 
