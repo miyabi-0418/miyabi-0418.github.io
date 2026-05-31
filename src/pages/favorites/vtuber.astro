@@ -5,7 +5,7 @@ const vtubers = [
   {
     name: "小清水透",
     slug: "koshimizu-toru",
-    tags: ["にじさんじ"],
+    tags: ["にじさんじ", "ゲーム"],
   },
 
   {
@@ -34,6 +34,13 @@ const vtubers = [
   },
   */
 ];
+
+const allTags = [
+  ...new Set(
+    vtubers.flatMap((vtuber) => vtuber.tags)
+  ),
+];
+
 ---
 
 <Layout title="Vtuber">
@@ -63,7 +70,34 @@ const vtubers = [
             transition
           "
         >
-          {vtuber.name}
+
+          <p class="font-bold text-lg">
+            {vtuber.name}
+          </p>
+
+          <div class="flex gap-2 flex-wrap mt-2">
+
+            {
+              vtuber.tags.map((tag) => (
+
+                <span
+                  class="
+                    text-xs
+                    bg-emerald-200
+                    text-emerald-900
+                    px-2
+                    py-1
+                    rounded-full
+                  "
+                >
+                  #{tag}
+                </span>
+
+              ))
+            }
+
+          </div>
+
         </a>
 
       ))
