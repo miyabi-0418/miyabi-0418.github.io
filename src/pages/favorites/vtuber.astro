@@ -1,5 +1,24 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
+const vtubers = [
+  {
+    name: "小清水透",
+    slug: "koshimizu-toru",
+  },
+
+  {
+    name: "KMNZ",
+    slug: "KMNZ",
+  },
+
+  /*
+  {
+    name: "",
+    slug: "",
+  },
+  */
+];
 ---
 
 <Layout title="Vtuber">
@@ -8,30 +27,32 @@ import Layout from "../../layouts/Layout.astro";
     Vtuber
   </h1>
 
+  <p class="text-zinc-700 mb-8">
+    好きなVtuberたち。
+  </p>
+
   <div class="space-y-4">
 
-    <a
-      href={`${import.meta.env.BASE_URL}favorites/vtubers/koshimizu-toru`}
-      class="block border rounded-2xl p-4 hover:bg-zinc-100"
-    >
-      小清水透
-    </a>
+    {
+      vtubers.map((vtuber) => (
 
-    <a
-      href={`${import.meta.env.BASE_URL}favorites/vtubers/KMNZ`}
-      class="block border rounded-2xl p-4 hover:bg-zinc-100"
-    >
-      KMNZ
-    </a>
+        <a
+          href={`${import.meta.env.BASE_URL}favorites/vtubers/${vtuber.slug}`}
+          class="
+            block
+            border
+            border-zinc-300
+            rounded-2xl
+            p-4
+            hover:bg-zinc-100
+            transition
+          "
+        >
+          {vtuber.name}
+        </a>
 
-    /*
-    <a
-      href={`${import.meta.env.BASE_URL}favorites/vtubers/`}
-      class="block border rounded-2xl p-4 hover:bg-zinc-100"
-    >
-      
-    </a>
-    */
+      ))
+    }
 
   </div>
 
