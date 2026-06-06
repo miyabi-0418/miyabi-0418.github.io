@@ -1,0 +1,149 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const vtuber = {
+  name: "ミミック",
+
+  description: `
+ミミックちゃん。
+企画が面白い動画が多い！
+謎拍手、た↑だ↓いま～、初期のEDが好き。
+
+ひまちゃんのローション師匠でもある(？)
+`,
+
+  x: "https://x.com/Mimic3v",
+  youtube: "https://www.youtube.com/@Mimic3",
+};
+
+const videos = [
+  {
+    title: "カルディ店員のオススメが被るまで購入生活！",
+    type: "企画動画",
+    comment: "沼企画の始まり。続きを待ってる...！",
+    youtube: "7UqfvfNkhlw",
+  },
+
+  /*
+  {
+    title: "",
+    type: "歌ってみた",
+    comment: "",
+    youtube: "",
+  },
+  */
+];
+---
+
+<Layout title={vtuber.name}>
+
+  <a
+    href={`${import.meta.env.BASE_URL}favorites/vtuber`}
+    class="
+      text-zinc-500
+      hover:text-zinc-700
+      transition
+    "
+  >
+    ← Vtuber
+  </a>
+
+  <h1 class="text-4xl font-bold mb-4">
+    {vtuber.name}
+  </h1>
+
+  <p class="whitespace-pre-line text-zinc-700 mb-8">
+    {vtuber.description}
+  </p>
+
+  <!-- SNS -->
+  <div class="flex gap-4 mb-10">
+
+    <a
+      href={vtuber.x}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="
+        px-4 py-2
+        rounded-xl
+        bg-zinc-900
+        text-white
+        hover:bg-zinc-700
+        transition
+      "
+    >
+      X
+    </a>
+
+    <a
+      href={vtuber.youtube}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="
+        px-4 py-2
+        rounded-xl
+        bg-red-600
+        text-white
+        hover:bg-red-500
+        transition
+      "
+    >
+      YouTube
+    </a>
+
+  </div>
+
+  <section class="space-y-10">
+
+    {
+      videos.map((video) => (
+
+        <div
+          class="
+            border
+            border-emerald-300
+            bg-emerald-50
+            rounded-2xl
+            p-6
+          "
+        >
+
+          <p
+            class="
+              text-sm
+              text-emerald-800
+              font-semibold
+              mb-2
+            "
+          >
+            {video.type}
+          </p>
+
+          <h2 class="text-2xl font-bold mb-2">
+            {video.title}
+          </h2>
+
+          <p class="mb-6 text-zinc-700">
+            {video.comment}
+          </p>
+
+          <div class="aspect-video">
+
+            <iframe
+              class="w-full h-full rounded-xl"
+              src={`https://www.youtube.com/embed/${video.youtube}`}
+              title={video.title}
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+
+          </div>
+
+        </div>
+
+      ))
+    }
+
+  </section>
+
+</Layout>
